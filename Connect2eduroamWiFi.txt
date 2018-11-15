@@ -1,6 +1,6 @@
 #This document guides you to connect your Raspberry Pi to the university Wi-Fi "eduroam"
 ##########################################
-#step1- add follwing configuration at the end of the /etc/wpa_supplicant/wpa_supplicant.conf
+#STEP1- add follwing configuration at the end of the /etc/wpa_supplicant/wpa_supplicant.conf
 
 network={
 	ssid="eduroam"
@@ -14,16 +14,19 @@ network={
 	phase2="auth=MSCHAPV2"
 }
 
-#step2- create a file called "eduroam" at the /etc/network/interfaces.d/
-# 		and add following configuration to the file (nano /etc/network/interfaces.d/eduroam).
+#Do NOT change /etc/network/interface in the new Raspbian OS otherwise wlan0 receives two IP addresses
+#(old version of Raspbian uses /etc/network/interfaces . But, new Raspbian uses dhcpcd.conf that automatically reads wpa_supplicant file.)
+# For old Raspbian OS create a file called "eduroam" at the /etc/network/interfaces.d/
+# and add following configuration to the file (nano /etc/network/interfaces.d/eduroam).
 
-auto wlan0
-allow-hotplug wlan0
-iface wlan0 inet dhcp
-    pre-up wpa_supplicant -B -Dwext -i wlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf
-    post-down killall -q wpa_supplicant
+#auto wlan0
+#allow-hotplug wlan0
+#iface wlan0 inet dhcp
+#    pre-up wpa_supplicant -B -Dwext -i wlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf
+#    post-down killall -q wpa_supplicant
+
 	
-#step3 - run following commands in Raspberry Pi
+#STEP2 - run following commands in Raspberry Pi
 
 killall wpa_supplicant
 ifdown wlan0
