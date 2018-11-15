@@ -1,0 +1,31 @@
+#This document guides you to connect your Raspberry Pi to the university Wi-Fi "eduroam"
+##########################################
+#step1- add follwing configuration at the end of the /etc/wpa_supplicant/wpa_supplicant.conf
+
+network={
+	ssid="eduroam"
+	proto=RSN
+	key_mgmt=WPA-EAP
+	pairwise=CCMP TKIP
+	group=CCMP TKIP
+	identity="yourUniversityIdentity"
+	pasword="YourPassword"
+	phase1="peaplabel=0"
+	phase2="auth=MSCHAPV2"
+}
+
+#step2- create a file called "eduroam" at the /etc/network/interfaces.d/
+# 		and add following configuration to the file (nano /etc/network/interfaces.d/eduroam).
+
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+    pre-up wpa_supplicant -B -Dwext -i wlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf
+    post-down killall -q wpa_supplicant
+	
+#step3 - run following commands in Raspberry Pi
+
+killall wpa_supplicant
+ifdown wlan0
+ifup wlan0
+
