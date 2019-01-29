@@ -1,0 +1,12 @@
+{\rtf1\ansi\ansicpg1251\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Notes for students:\
+This project about smart greenhouse system which can measure temperature, humidity, soil moisture and send data to Kibana (in code you can also see parts for thingSpeak). In case of abnormal situations system sends an SMS to a user. All sensors connections can be found in Magshoud\'92s PDF files.\
+1) Be aware of python as it\'92s whitespace sensitive language.\
+2) Use Python 3 version from the beginning if you are going to use Twilio for sending SMS.\
+3) When you do your project, answer on a question: \'abBeing in a sober mind and sound memory, would I use my product?\'bb If not, analyze why not, to what extend not, and what should you do to make the answer \'abYes\'bb. Be as accurate as possible and use scientific approach, language and literature.}
